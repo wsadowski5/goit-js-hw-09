@@ -7,7 +7,7 @@ const body = document.querySelector('body')
 const btnStart = document.querySelector('[data-start]')
 const btnStop = document.querySelector('[data-stop')
 
-btnStop.toggleAttribute('disabled',true)
+btnStop.toggleAttribute('disabled',)
 
 let timerId = null
 
