@@ -2,8 +2,13 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
 const startBtn = document.querySelector('[data-start]')
+const daysValue = document.querySelector('[data-days]')
+const hoursValue = document.querySelector('[data-hours]')
+const minutesValue = document.querySelector('[data-minutes]')
+const secondsValue = document.querySelector('[data-seconds]')
 
-startBtn.toggleAttribute('disabled',)
+
+startBtn.setAttribute('disabled','')
 
 function convertMs(ms) {
     // Number of milliseconds per unit of time
@@ -25,8 +30,6 @@ function convertMs(ms) {
     }
 
 
-
-
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -37,20 +40,43 @@ const options = {
             alert('Please choose a date in the future')
         }
         else {
-            startBtn.toggleAttribute('disabled',);
-            setInterval(() =>{
-               let remainingTime = (selectedDates[0]) - (new Date());
-               
-               console.log(remainingTime);
-              console.log(convertMs(remainingTime))
-            }, 1000)
+            startBtn.removeAttribute('disabled','');
+            startBtn.addEventListener('click', () => {
+              setInterval(() =>{
+                let remainingTime = (selectedDates[0]) - (new Date());
+                
+                do {
+                  function addLeadingZero (value){
+
+                  const stringDays = convertMs(remainingTime).days.toString();
+                  const stringHours = convertMs(remainingTime).hours.toString();
+                  const stringMinutes = convertMs(remainingTime).minutes.toString();
+                  const stringSeconds = convertMs(remainingTime).seconds.toString();
+
+                  const prependedDays = stringDays.padStart(value, '0')
+                  const prependedHours = stringHours.padStart(value, '0')
+                  const prependedMinutes = stringMinutes.padStart(value, '0')
+                  const prependedSeconds = stringSeconds.padStart(value, '0')
+
+                  daysValue.textContent = prependedDays
+                  hoursValue.textContent = prependedHours
+                  minutesValue.textContent = prependedMinutes
+                  secondsValue.textContent = prependedSeconds
+                  }
+
+                  addLeadingZero(2)
+
+                  
+                }
+                while (remainingTime < 0)
+                
+              }, 1000)
+            })
         }
-        
-      },
+      }
   };
 
 
 
 flatpickr('#datetime-picker', options) 
-
 
