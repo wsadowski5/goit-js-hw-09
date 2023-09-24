@@ -40,9 +40,14 @@ const options = {
             alert('Please choose a date in the future')
         }
         else {
+
+            let timer = null
+            
             startBtn.removeAttribute('disabled',true);
             startBtn.addEventListener('click', () => {
-              setInterval(() =>{
+
+              clearInterval(timer);
+              timer = setInterval(() =>{
                 let remainingTime = (selectedDates[0]) - (new Date());
                 
                 do {
@@ -62,12 +67,12 @@ const options = {
                   hoursValue.textContent = prependedHours
                   minutesValue.textContent = prependedMinutes
                   secondsValue.textContent = prependedSeconds
+
                   }
-
-                  addLeadingZero(2)
-
-                  
+                  addLeadingZero(2);
+                  clearInterval();
                 }
+
                 while (remainingTime < 0)
                 
               }, 1000)
