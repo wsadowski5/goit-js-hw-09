@@ -8,7 +8,7 @@ const minutesValue = document.querySelector('[data-minutes]')
 const secondsValue = document.querySelector('[data-seconds]')
 
 
-startBtn.setAttribute('disabled','')
+startBtn.setAttribute('disabled',true)
 
 function convertMs(ms) {
     // Number of milliseconds per unit of time
@@ -40,7 +40,7 @@ const options = {
             alert('Please choose a date in the future')
         }
         else {
-            startBtn.removeAttribute('disabled','');
+            startBtn.removeAttribute('disabled',true);
             startBtn.addEventListener('click', () => {
               setInterval(() =>{
                 let remainingTime = (selectedDates[0]) - (new Date());
