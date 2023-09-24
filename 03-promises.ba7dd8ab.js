@@ -1,0 +1,2 @@
+function e(e,t){Math.random()>.3?console.log(`Fulfilled promise ${e} in ${t}ms`):console.log(`Rejected promise ${e} in ${t}ms`)}const t=document.querySelector('input[name="delay"]'),n=document.querySelector('input[name="step"]'),o=document.querySelector('input[name="amount"]');document.querySelector("button[type=submit]").addEventListener("click",(u=>{u.preventDefault();for(let u=1;u<=o.value;u++){let o=u,l=Number(t.value)+Number(n.value*(u-1));setTimeout((()=>{e(o,l)}),l)}}));
+//# sourceMappingURL=03-promises.ba7dd8ab.js.map
