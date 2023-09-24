@@ -50,31 +50,28 @@ const options = {
               timer = setInterval(() =>{
                 let remainingTime = (selectedDates[0]) - (new Date());
                 
-                do {
+ 
+                if  (remainingTime > 0) {
                   function addLeadingZero (value){
 
-                  const stringDays = convertMs(remainingTime).days.toString();
-                  const stringHours = convertMs(remainingTime).hours.toString();
-                  const stringMinutes = convertMs(remainingTime).minutes.toString();
-                  const stringSeconds = convertMs(remainingTime).seconds.toString();
-
-                  const prependedDays = stringDays.padStart(value, '0')
-                  const prependedHours = stringHours.padStart(value, '0')
-                  const prependedMinutes = stringMinutes.padStart(value, '0')
-                  const prependedSeconds = stringSeconds.padStart(value, '0')
-
-                  daysValue.textContent = prependedDays
-                  hoursValue.textContent = prependedHours
-                  minutesValue.textContent = prependedMinutes
-                  secondsValue.textContent = prependedSeconds
-
-                  }
-                  addLeadingZero(2);
-                  clearInterval();
-                }
-
-                while (remainingTime < 0)
-                
+                    const stringDays = convertMs(remainingTime).days.toString();
+                    const stringHours = convertMs(remainingTime).hours.toString();
+                    const stringMinutes = convertMs(remainingTime).minutes.toString();
+                    const stringSeconds = convertMs(remainingTime).seconds.toString();
+  
+                    const prependedDays = stringDays.padStart(value, '0')
+                    const prependedHours = stringHours.padStart(value, '0')
+                    const prependedMinutes = stringMinutes.padStart(value, '0')
+                    const prependedSeconds = stringSeconds.padStart(value, '0')
+  
+                    daysValue.textContent = prependedDays
+                    hoursValue.textContent = prependedHours
+                    minutesValue.textContent = prependedMinutes
+                    secondsValue.textContent = prependedSeconds
+  
+                    }
+                    addLeadingZero(2);
+                }                
               }, 1000)
             })
         }
